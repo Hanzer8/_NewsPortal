@@ -28,7 +28,12 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 import os
-SITE_ID=1
+
+SITE_ID = 1
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
 
 # Application definition
 
@@ -39,8 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
 
     'news',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -52,7 +60,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware'
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -60,7 +68,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates/flatpages')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
